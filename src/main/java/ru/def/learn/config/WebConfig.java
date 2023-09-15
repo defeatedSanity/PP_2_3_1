@@ -69,13 +69,13 @@ public class WebConfig implements WebMvcConfigurer {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.
-                getRequiredProperty("hibernate.driver_class"));
+                getRequiredProperty("db.driver"));
         dataSource.setUrl(env.
-                getRequiredProperty("hibernate.connection.url"));
+                getRequiredProperty("db.url"));
         dataSource.setUsername(env.
-                getRequiredProperty("hibernate.connection.username"));
+                getRequiredProperty("db.username"));
         dataSource.setPassword(env.
-                getRequiredProperty("hibernate.connection.password"));
+                getRequiredProperty("db.password"));
         return dataSource;
     }
 
@@ -107,8 +107,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto",
+                env.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
-
 }
