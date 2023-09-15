@@ -110,5 +110,4 @@ public class WebConfig implements WebMvcConfigurer {
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         return properties;
     }
-
 }
